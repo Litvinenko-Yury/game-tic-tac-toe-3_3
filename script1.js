@@ -16,9 +16,6 @@ cells[4].addEventListener('click', function (e) {
     target.classList.add('board__item--player'); // установить стили для кликнутой ячейки */
 
     moveCorner(); //сделать ход в любой угол
-
-    winCheckPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш Игрок
-    winCheckPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
   }
 }, { once: true });
 
@@ -29,6 +26,7 @@ cells[0].addEventListener('click', function (e) {
   console.log('клик на cells[0]');
   let target = e.target; // где был клик?
   target.classList.add('board__item--player'); // установить стили для кликнутой ячейки */
+
   if (emptyCellCheck(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
     console.log('нашел три в ряд');
     winCheckPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
@@ -37,6 +35,7 @@ cells[0].addEventListener('click', function (e) {
   } else {
     cells[8].classList.add('board__item--pc'); // ход ПК в 8
   }
+
   winCheckPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш Игрок
   winCheckPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
 });
@@ -125,7 +124,7 @@ cells[6].addEventListener('click', function (e) {
   } else {
     cells[2].classList.add('board__item--pc'); // ход ПК в 6
   }
-  
+
   winCheckPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш Игрок
   winCheckPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
 });
@@ -374,62 +373,72 @@ function winCheckPlayer(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
 
 /**проверка выигыша ПК*/
 function winCheckPC(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
+  console.log('заработала функ');
   //условная матрица ячеек
   //[aa, ab, ac]
   //[ba, bb, bc]
   //[ca, cb, cc]
 
   //1-я горизонталь
-  if (cells[aa].classList.contains('board__item--pс') && cells[ab].classList.contains('board__item--pс') && cells[ac].classList.contains('board__item--pс')) {
+  console.log('начинается условие 1-я горизонталь');
+  if (cells[aa].classList.contains('board__item--pc') && cells[ab].classList.contains('board__item--pc') && cells[ac].classList.contains('board__item--pc')) {
+    console.log('условие true');
     cells[aa].classList.add('board__item--winning');
     cells[ab].classList.add('board__item--winning');
     cells[ac].classList.add('board__item--winning');
+  } else {
+    console.log('условие false');
   }
 
   //2-я горизонталь
-  if (cells[ba].classList.contains('board__item--pс') && cells[bb].classList.contains('board__item--pс') && cells[bc].classList.contains('board__item--pс')) {
+  if (cells[ba].classList.contains('board__item--pc') && cells[bb].classList.contains('board__item--pc') && cells[bc].classList.contains('board__item--pc')) {
     cells[ba].classList.add('board__item--winning');
     cells[bb].classList.add('board__item--winning');
     cells[bc].classList.add('board__item--winning');
   }
 
   //3-я горизонталь
-  if (cells[ca].classList.contains('board__item--pс') && cells[cb].classList.contains('board__item--pс') && cells[cc].classList.contains('board__item--pс')) {
+  console.log('начинается условие 3-я горизонталь');
+  if (cells[ca].classList.contains('board__item--pc') && cells[cb].classList.contains('board__item--pc') && cells[cc].classList.contains('board__item--pc')) {
+    console.log('условие true');
     cells[ca].classList.add('board__item--winning');
     cells[cb].classList.add('board__item--winning');
     cells[cc].classList.add('board__item--winning');
+  } else {
+    console.log('условие false');
   }
 
+
   //1-я вертикаль
-  if (cells[aa].classList.contains('board__item--pс') && cells[ba].classList.contains('board__item--pс') && cells[ca].classList.contains('board__item--pс')) {
+  if (cells[aa].classList.contains('board__item--pc') && cells[ba].classList.contains('board__item--pc') && cells[ca].classList.contains('board__item--pc')) {
     cells[aa].classList.add('board__item--winning');
     cells[ba].classList.add('board__item--winning');
     cells[ca].classList.add('board__item--winning');
   }
 
   //2-я вертикаль
-  if (cells[ab].classList.contains('board__item--pс') && cells[bb].classList.contains('board__item--pс') && cells[cb].classList.contains('board__item--pс')) {
+  if (cells[ab].classList.contains('board__item--pc') && cells[bb].classList.contains('board__item--pc') && cells[cb].classList.contains('board__item--pc')) {
     cells[ab].classList.add('board__item--winning');
     cells[bb].classList.add('board__item--winning');
     cells[cb].classList.add('board__item--winning');
   }
 
   //3-я вертикаль
-  if (cells[ac].classList.contains('board__item--pс') && cells[bc].classList.contains('board__item--pс') && cells[cc].classList.contains('board__item--pс')) {
+  if (cells[ac].classList.contains('board__item--pc') && cells[bc].classList.contains('board__item--pc') && cells[cc].classList.contains('board__item--pc')) {
     cells[ac].classList.add('board__item--winning');
     cells[bc].classList.add('board__item--winning');
     cells[cc].classList.add('board__item--winning');
   }
 
   //1-я диагональ
-  if (cells[aa].classList.contains('board__item--pс') && cells[bb].classList.contains('board__item--pс') && cells[cc].classList.contains('board__item--pс')) {
+  if (cells[aa].classList.contains('board__item--pc') && cells[bb].classList.contains('board__item--pc') && cells[cc].classList.contains('board__item--pc')) {
     cells[aa].classList.add('board__item--winning');
     cells[bb].classList.add('board__item--winning');
     cells[cc].classList.add('board__item--winning');
   }
 
   //2-я диагональ
-  if (cells[ca].classList.contains('board__item--pс') && cells[bb].classList.contains('board__item--pс') && cells[ac].classList.contains('board__item--pс')) {
+  if (cells[ca].classList.contains('board__item--pc') && cells[bb].classList.contains('board__item--pc') && cells[ac].classList.contains('board__item--pc')) {
     cells[ca].classList.add('board__item--winning');
     cells[bb].classList.add('board__item--winning');
     cells[ac].classList.add('board__item--winning');
