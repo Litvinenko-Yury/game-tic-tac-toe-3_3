@@ -32,7 +32,7 @@ body {
   border: 1px solid #888888;
 }
 
-.board__item--active-gamer::before {
+.board__item--player::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -44,7 +44,7 @@ body {
   background-color: coral;
 }
 
-.board__item--active-gamer::after {
+.board__item--player::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -56,15 +56,18 @@ body {
   background-color: coral;
 }
 
-.board__item--active-pc::before {
+.board__item--pc::before {
   content: "";
   position: absolute;
   top: 50%;
   left: 50%;
   width: 70%;
   height: 70%;
-  transform: translate( -50%, -50%);
+  transform: translate(-50%, -50%);
   border: 5px solid coral;
   border-radius: 50%;
+}
 
+.board__item--winning {
+  background-color: #2d3b28;
 }
