@@ -7,7 +7,7 @@ const cells = document.querySelectorAll('.board__item');
 
 /*ИГРОК начал С ЦЕНТРА поля*/
 cells[4].addEventListener('click', function (e) {
-  console.log('клик на cells[1]');
+  console.log('клик на cells[4]');
   let target = e.target; // где был клик?
 
   if (target.classList.contains('board__item--player') || target.classList.contains('board__item--pc')) { //клик на свободной ячейке?
@@ -94,7 +94,7 @@ cells[2].addEventListener('click', function (e) {
 });
 
 cells[3].addEventListener('click', function (e) {
-  console.log('клик на cells[2]');
+  console.log('клик на cells[3]');
   let target = e.target; // где был клик?
   if (target.classList.contains('board__item--player') || target.classList.contains('board__item--pc')) { //клик на свободной ячейке?
     console.log('эта ячейка занята!');
@@ -117,7 +117,7 @@ cells[3].addEventListener('click', function (e) {
 });
 
 cells[5].addEventListener('click', function (e) {
-  console.log('клик на cells[2]');
+  console.log('клик на cells[5]');
   let target = e.target; // где был клик?
   if (target.classList.contains('board__item--player') || target.classList.contains('board__item--pc')) { //клик на свободной ячейке?
     console.log('эта ячейка занята!');
@@ -142,7 +142,7 @@ cells[5].addEventListener('click', function (e) {
 });
 
 cells[6].addEventListener('click', function (e) {
-  console.log('клик на cells[2]');
+  console.log('клик на cells[6]');
   let target = e.target; // где был клик?
   if (target.classList.contains('board__item--player') || target.classList.contains('board__item--pc')) { //клик на свободной ячейке?
     console.log('эта ячейка занята!');
@@ -167,7 +167,7 @@ cells[6].addEventListener('click', function (e) {
 });
 
 cells[7].addEventListener('click', function (e) {
-  console.log('клик на cells[2]');
+  console.log('клик на cells[7]');
   let target = e.target; // где был клик?
   if (target.classList.contains('board__item--player') || target.classList.contains('board__item--pc')) { //клик на свободной ячейке?
     console.log('эта ячейка занята!');
@@ -190,7 +190,7 @@ cells[7].addEventListener('click', function (e) {
 });
 
 cells[8].addEventListener('click', function (e) {
-  console.log('клик на cells[2]');
+  console.log('клик на cells[8]');
   let target = e.target; // где был клик?
   if (target.classList.contains('board__item--player') || target.classList.contains('board__item--pc')) { //клик на свободной ячейке?
     console.log('эта ячейка занята!');
@@ -224,25 +224,28 @@ function rndInt(min, max) {
   return Math.floor(random);
 }
 
-/**обозначить ячейку хода Игрок */
+/**пометить ячейку, ход Игрок */
 function markCellPlayer(a) {
   //cells[a].classList.add('board__item--pc');
 }
 
-/**обозначить ячейку хода ПК */
+/**пометить ячейку, ход ПК */
 function markCellPC(a) {
   cells[a].classList.add('board__item--pc');
 }
 
-/**ход ПК в угол*/
+/**ход ПК в  СВОБОДНЫЙ угол*/
 function moveCorner() {
   let n = 0;
   while (n < 10) {
     n = rndInt(0, 8);// записать в переменную то, что вернет функция
-    if (n == 0 || n == 2 || n == 6 || n == 8) {
-      console.log('n = ' + n);
-      markCellPC(n);
-      break;
+    console.log('n до условия = ' + n);
+    if (n == 0 || n == 2 || n == 6 || n == 8) { // найден № угла
+      if (!cells[n].classList.contains('board__item--player') || !cells[n].classList.contains('board__item--pc')) { //проверка, свободен-ли угол
+        console.log('n после = ' + n);
+        markCellPC(n);
+        break;
+      }
     }
   }
 }
@@ -387,85 +390,157 @@ function checkEmptyCellPlayer(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
   //[ca, cb, cc]
 
   //1-я горизонталь
-  if (cells[aa].classList.contains('board__item--player') && cells[ab].classList.contains('board__item--player')) {
+  if (cells[ac].classList.contains('board__item--pc')) {
+    console.log('игрок олень, но ничего не поделать: [ac] - занят, нужно ходить в другую ячейку, в угол');
+    moveCorner();
+    return;
+  } else if (cells[aa].classList.contains('board__item--player') && cells[ab].classList.contains('board__item--player')) {
     cells[ac].classList.add('board__item--pc');
     return true;
   }
-  if (cells[aa].classList.contains('board__item--player') && cells[ac].classList.contains('board__item--player')) {
+  if (cells[ab].classList.contains('board__item--pc')) {
+    console.log('игрок олень, но ничего не поделать: [ab] - занят, нужно ходить в другую ячейку');
+    moveCorner();
+    return;
+  } else if (cells[aa].classList.contains('board__item--player') && cells[ac].classList.contains('board__item--player')) {
     cells[ab].classList.add('board__item--pc');
     return true;
   }
-  if (cells[ab].classList.contains('board__item--player') && cells[ac].classList.contains('board__item--player')) {
+  if (cells[aa].classList.contains('board__item--pc')) {
+    console.log('игрок олень, но ничего не поделать: [aa] - занят, нужно ходить в другую ячейку');
+    moveCorner();
+    return;
+  } else if (cells[ab].classList.contains('board__item--player') && cells[ac].classList.contains('board__item--player')) {
     cells[aa].classList.add('board__item--pc');
     return true;
   }
 
   //2-я горизонталь
-  if (cells[ba].classList.contains('board__item--player') && cells[bb].classList.contains('board__item--player')) {
+  if (cells[bc].classList.contains('board__item--pc')) {
+    console.log('игрок олень, но ничего не поделать: [bc] - занят, нужно ходить в другую ячейку');
+    moveCorner();
+    return;
+  } else if (cells[ba].classList.contains('board__item--player') && cells[bb].classList.contains('board__item--player')) {
     cells[bc].classList.add('board__item--pc');
     return true;
   }
-  if (cells[ba].classList.contains('board__item--player') && cells[bc].classList.contains('board__item--player')) {
+  if (cells[bb].classList.contains('board__item--pc')) {
+    console.log('игрок олень, но ничего не поделать: [bb] - занят, нужно ходить в другую ячейку');
+    moveCorner();
+    return;
+  } else if (cells[ba].classList.contains('board__item--player') && cells[bc].classList.contains('board__item--player')) {
     cells[bb].classList.add('board__item--pc');
     return true;
   }
-  if (cells[bb].classList.contains('board__item--player') && cells[bc].classList.contains('board__item--player')) {
+  if (cells[ba].classList.contains('board__item--pc')) {
+    console.log('игрок олень, но ничего не поделать: [ba] - занят, нужно ходить в другую ячейку');
+    moveCorner();
+    return;
+  } else if (cells[bb].classList.contains('board__item--player') && cells[bc].classList.contains('board__item--player')) {
     cells[ba].classList.add('board__item--pc');
     return true;
   }
 
   //3-я горизонталь
-  if (cells[ca].classList.contains('board__item--player') && cells[cb].classList.contains('board__item--player')) {
+  if (cells[cc].classList.contains('board__item--pc')) {
+    console.log('игрок олень, но ничего не поделать: [cc] - занят, нужно ходить в другую ячейку');
+    moveCorner();
+    return;
+  } else if (cells[ca].classList.contains('board__item--player') && cells[cb].classList.contains('board__item--player')) {
     cells[cc].classList.add('board__item--pc');
     return true;
   }
-  if (cells[ca].classList.contains('board__item--player') && cells[cc].classList.contains('board__item--player')) {
+  if (cells[cb].classList.contains('board__item--pc')) {
+    console.log('игрок олень, но ничего не поделать: [cb] - занят, нужно ходить в другую ячейку');
+    moveCorner();
+    return;
+  } else if (cells[ca].classList.contains('board__item--player') && cells[cc].classList.contains('board__item--player')) {
     cells[cb].classList.add('board__item--pc');
     return true;
   }
-  if (cells[cb].classList.contains('board__item--player') && cells[cc].classList.contains('board__item--player')) {
+  if (cells[ca].classList.contains('board__item--pc')) {
+    console.log('игрок олень, но ничего не поделать: [ca] - занят, нужно ходить в другую ячейку');
+    moveCorner();
+    return;
+  } else if (cells[cb].classList.contains('board__item--player') && cells[cc].classList.contains('board__item--player')) {
     cells[ca].classList.add('board__item--pc');
     return true;
   }
 
   //1-я вертикаль
-  if (cells[aa].classList.contains('board__item--player') && cells[ba].classList.contains('board__item--player')) {
+  if (cells[ca].classList.contains('board__item--pc')) {
+    console.log('игрок олень, но ничего не поделать: [ca] - занят, нужно ходить в другую ячейку');
+    moveCorner();
+    return;
+  } else if (cells[aa].classList.contains('board__item--player') && cells[ba].classList.contains('board__item--player')) {
     cells[ca].classList.add('board__item--pc');
     return true;
   }
-  if (cells[aa].classList.contains('board__item--player') && cells[ca].classList.contains('board__item--player')) {
+  if (cells[ba].classList.contains('board__item--pc')) {
+    console.log('игрок олень, но ничего не поделать: [ba] - занят, нужно ходить в другую ячейку');
+    moveCorner();
+    return;
+  } else if (cells[aa].classList.contains('board__item--player') && cells[ca].classList.contains('board__item--player')) {
     cells[ba].classList.add('board__item--pc');
     return true;
   }
-  if (cells[ba].classList.contains('board__item--player') && cells[ca].classList.contains('board__item--player')) {
+  if (cells[aa].classList.contains('board__item--pc')) {
+    console.log('игрок олень, но ничего не поделать: [aa] - занят, нужно ходить в другую ячейку');
+    moveCorner();
+    return;
+  } else if (cells[ba].classList.contains('board__item--player') && cells[ca].classList.contains('board__item--player')) {
     cells[aa].classList.add('board__item--pc');
     return true;
   }
 
   //2-я вертикаль
-  if (cells[ab].classList.contains('board__item--player') && cells[bb].classList.contains('board__item--player')) {
+  if (cells[cb].classList.contains('board__item--pc')) {
+    console.log('игрок олень, но ничего не поделать: [cb] - занят, нужно ходить в другую ячейку');
+    moveCorner();
+    return;
+  } else if (cells[ab].classList.contains('board__item--player') && cells[bb].classList.contains('board__item--player')) {
     cells[cb].classList.add('board__item--pc');
     return true;
   }
-  if (cells[ab].classList.contains('board__item--player') && cells[cb].classList.contains('board__item--player')) {
+  if (cells[bb].classList.contains('board__item--pc')) {
+    console.log('игрок олень, но ничего не поделать: [bb] - занят, нужно ходить в другую ячейку');
+    moveCorner();
+    return;
+  } else if (cells[ab].classList.contains('board__item--player') && cells[cb].classList.contains('board__item--player')) {
     cells[bb].classList.add('board__item--pc');
     return true;
   }
-  if (cells[bb].classList.contains('board__item--player') && cells[cb].classList.contains('board__item--player')) {
+  if (cells[ab].classList.contains('board__item--pc')) {
+    console.log('игрок олень, но ничего не поделать: [ab] - занят, нужно ходить в другую ячейку');
+    moveCorner();
+    return;
+  } else if (cells[bb].classList.contains('board__item--player') && cells[cb].classList.contains('board__item--player')) {
     cells[ab].classList.add('board__item--pc');
     return true;
   }
 
   //3-я вертикаль
-  if (cells[ac].classList.contains('board__item--player') && cells[bc].classList.contains('board__item--player')) {
+  if (cells[cc].classList.contains('board__item--pc')) {
+    console.log('игрок олень, но ничего не поделать: [cc] - занят, нужно ходить в другую ячейку');
+    moveCorner();
+    return;
+  } else if (cells[ac].classList.contains('board__item--player') && cells[bc].classList.contains('board__item--player')) {
     cells[cc].classList.add('board__item--pc');
     return true;
   }
-  if (cells[ac].classList.contains('board__item--player') && cells[cc].classList.contains('board__item--player')) {
+  if (cells[bc].classList.contains('board__item--pc')) {
+    console.log('игрок олень, но ничего не поделать: [bc] - занят, нужно ходить в другую ячейку');
+    moveCorner();
+    return;
+  } else if (cells[ac].classList.contains('board__item--player') && cells[cc].classList.contains('board__item--player')) {
     cells[bc].classList.add('board__item--pc');
     return true;
   }
-  if (cells[bc].classList.contains('board__item--player') && cells[cc].classList.contains('board__item--player')) {
+  if (cells[ac].classList.contains('board__item--pc')) {
+    console.log('игрок олень, но ничего не поделать: [ac] - занят, нужно ходить в другую ячейку');
+    moveCorner();
+    return;
+  } else if (cells[bc].classList.contains('board__item--player') && cells[cc].classList.contains('board__item--player')) {
     cells[ac].classList.add('board__item--pc');
     return true;
   }
@@ -473,21 +548,27 @@ function checkEmptyCellPlayer(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
 
   //1-я диагональ
   if (cells[cc].classList.contains('board__item--pc')) {
-    console.log('игрок олень, но ничего не поделать: [bb] - занят, нужно ходить в другую ячейку')
+    console.log('игрок олень, но ничего не поделать: [cc] - занят, нужно ходить в другую ячейку');
+    moveCorner();
+    return;
   } else if (cells[aa].classList.contains('board__item--player') && cells[bb].classList.contains('board__item--player')) {
     cells[cc].classList.add('board__item--pc');
     return true;
   }
 
   if (cells[bb].classList.contains('board__item--pc')) {
-    console.log('игрок олень, но ничего не поделать: [bb] - занят, нужно ходить в другую ячейку')
+    console.log('игрок олень, но ничего не поделать: [bb] - занят, нужно ходить в другую ячейку');
+    moveCorner();
+    return;
   } else if (cells[aa].classList.contains('board__item--player') && cells[cc].classList.contains('board__item--player')) {
     cells[bb].classList.add('board__item--pc');
     return true;
   }
 
   if (cells[aa].classList.contains('board__item--pc')) {
-    console.log('игрок олень, но ничего не поделать: [aa] - занят, нужно ходить в другую ячейку')
+    console.log('игрок олень, но ничего не поделать: [aa] - занят, нужно ходить в другую ячейку');
+    moveCorner();
+    return;
   } else if (cells[bb].classList.contains('board__item--player') && cells[cc].classList.contains('board__item--player')) {
     cells[aa].classList.add('board__item--pc');
     return true;
@@ -495,21 +576,27 @@ function checkEmptyCellPlayer(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
 
   //2-я диагональ
   if (cells[ac].classList.contains('board__item--pc')) {
-    console.log('игрок олень, но ничего не поделать: [ac] - занят, нужно ходить в другую ячейку')
+    console.log('игрок олень, но ничего не поделать: [ac] - занят, нужно ходить в другую ячейку');
+    moveCorner();
+    return;
   } else if (cells[ca].classList.contains('board__item--player') && cells[bb].classList.contains('board__item--player')) {
     cells[ac].classList.add('board__item--pc');
     return true;
   }
 
   if (cells[bb].classList.contains('board__item--pc')) {
-    console.log('игрок олень, но ничего не поделать: [bb] - занят, нужно ходить в другую ячейку')
+    console.log('игрок олень, но ничего не поделать: [bb] - занят, нужно ходить в другую ячейку');
+    moveCorner();
+    return;
   } else if (cells[ca].classList.contains('board__item--player') && cells[ac].classList.contains('board__item--player')) {
     cells[bb].classList.add('board__item--player');
     return true;
   }
 
   if (cells[ca].classList.contains('board__item--pc')) {
-    console.log('игрок олень, но ничего не поделать: [ca] - занят, нужно ходить в другую ячейку')
+    console.log('игрок олень, но ничего не поделать: [ca] - занят, нужно ходить в другую ячейку');
+    moveCorner();
+    return;
   } else if (cells[bb].classList.contains('board__item--player') && cells[ac].classList.contains('board__item--player')) {
     cells[ca].classList.add('board__item--pc');
     return true;
