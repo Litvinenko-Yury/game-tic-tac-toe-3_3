@@ -9,77 +9,25 @@ const cells = document.querySelectorAll('.board__item');
 
 
 /**ДАЛЬНЕЙШИЕ ВОЗМОЖНЫЕ ХОДЫ ИГРОКА */
-cells[0].addEventListener('click', function (e) {
+cells[0].addEventListener('click', function (event) {
   console.log('клик на cells[0]');
-  let target = e.target; // где был клик?
-  if (!(target.classList.contains('board__item--player') || target.classList.contains('board__item--pc'))) { //клик на свободной ячейке?
-    markCellPlayer(target);// установить стили для кликнутой ячейки
-  } else {
-    console.log('эта ячейка занята!');
-  }
-
-  if (checkEmptyCellPC(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
-    console.log('нашел у ПК две в ряд, ставлю третью');
-    checkWinPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
-  } else if (checkEmptyCellPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
-    console.log('нашел у Игрока две в ряд, блокирую');
-    checkWinPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
-  }
-
-  checkWinPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш Игрок
-  checkWinPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
+  addMainLogic(event); // главная рабочая функция
 }, { once: true });
 
-cells[1].addEventListener('click', function (e) {
+cells[1].addEventListener('click', function (event) {
   console.log('клик на cells[1]');
-  let target = e.target; // где был клик?
-  if (!(target.classList.contains('board__item--player') || target.classList.contains('board__item--pc'))) { //клик на свободной ячейке?
-    markCellPlayer(target);// установить стили для кликнутой ячейки
-  } else {
-    console.log('эта ячейка занята!');
-  }
-
-  if (checkEmptyCellPC(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
-    console.log('нашел у ПК две в ряд, ставлю третью');
-    checkWinPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
-  } else if (checkEmptyCellPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
-    console.log('нашел у Игрока две в ряд, блокирую');
-    checkWinPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
-  }
-
-  checkWinPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш Игрок
-  checkWinPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
+  addMainLogic(event); // главная рабочая функция
 }, { once: true });
 
-cells[2].addEventListener('click', function (e) {
+cells[2].addEventListener('click', function (event) {
   console.log('клик на cells[2]');
-  let target = e.target; // где был клик?
-  if (!(target.classList.contains('board__item--player') || target.classList.contains('board__item--pc'))) { //клик на свободной ячейке?
-    markCellPlayer(target);// установить стили для кликнутой ячейки
-  } else {
-    console.log('эта ячейка занята!');
-  }
-
-  if (checkEmptyCellPC(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
-    console.log('нашел у ПК две в ряд, ставлю третью');
-    checkWinPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
-  } else if (checkEmptyCellPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
-    console.log('нашел у Игрока две в ряд, блокирую');
-    checkWinPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
-  }
-
-  checkWinPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш Игрок
-  checkWinPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
+  addMainLogic(event); // главная рабочая функция
 }, { once: true });
 
 cells[3].addEventListener('click', function (e) {
   console.log('клик на cells[3]');
   let target = e.target; // где был клик?
-  if (!(target.classList.contains('board__item--player') || target.classList.contains('board__item--pc'))) { //клик на свободной ячейке?
-    markCellPlayer(target);// установить стили для кликнутой ячейки
-  } else {
-    console.log('эта ячейка занята!');
-  }
+  markCellPlayer(target); // применить стили для ячейки, ход Игрок
 
   if (checkEmptyCellPC(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
     console.log('нашел у ПК две в ряд, ставлю третью');
@@ -108,11 +56,7 @@ cells[4].addEventListener('click', function (e) {
 cells[5].addEventListener('click', function (e) {
   console.log('клик на cells[5]');
   let target = e.target; // где был клик?
-  if (!(target.classList.contains('board__item--player') || target.classList.contains('board__item--pc'))) { //клик на свободной ячейке?
-    markCellPlayer(target);// установить стили для кликнутой ячейки
-  } else {
-    console.log('эта ячейка занята!');
-  }
+  markCellPlayer(target); // применить стили для ячейки, ход Игрок
 
   if (checkEmptyCellPC(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
     console.log('нашел у ПК две в ряд, ставлю третью');
@@ -126,35 +70,15 @@ cells[5].addEventListener('click', function (e) {
   checkWinPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
 }, { once: true });
 
-cells[6].addEventListener('click', function (e) {
+cells[6].addEventListener('click', function (event) {
   console.log('клик на cells[6]');
-  let target = e.target; // где был клик?
-  if (!(target.classList.contains('board__item--player') || target.classList.contains('board__item--pc'))) { //клик на свободной ячейке?
-    markCellPlayer(target);// установить стили для кликнутой ячейки
-  } else {
-    console.log('эта ячейка занята!');
-  }
-
-  if (checkEmptyCellPC(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
-    console.log('нашел у ПК две в ряд, ставлю третью');
-    checkWinPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
-  } else if (checkEmptyCellPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
-    console.log('нашел у Игрока две в ряд, блокирую');
-    checkWinPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
-  }
-
-  checkWinPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш Игрок
-  checkWinPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
+  addMainLogic(event); // главная рабочая функция
 }, { once: true });
 
 cells[7].addEventListener('click', function (e) {
   console.log('клик на cells[7]');
   let target = e.target; // где был клик?
-  if (!(target.classList.contains('board__item--player') || target.classList.contains('board__item--pc'))) { //клик на свободной ячейке?
-    markCellPlayer(target);// установить стили для кликнутой ячейки
-  } else {
-    console.log('эта ячейка занята!');
-  }
+  markCellPlayer(target); // применить стили для ячейки, ход Игрок
 
   if (checkEmptyCellPC(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
     console.log('нашел у ПК две в ряд, ставлю третью');
@@ -168,25 +92,9 @@ cells[7].addEventListener('click', function (e) {
   checkWinPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
 }, { once: true });
 
-cells[8].addEventListener('click', function (e) {
+cells[8].addEventListener('click', function (event) {
   console.log('клик на cells[8]');
-  let target = e.target; // где был клик?
-  if (!(target.classList.contains('board__item--player') || target.classList.contains('board__item--pc'))) { //клик на свободной ячейке?
-    markCellPlayer(target);// установить стили для кликнутой ячейки
-  } else {
-    console.log('эта ячейка занята!');
-  }
-
-  if (checkEmptyCellPC(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
-    console.log('нашел у ПК две в ряд, ставлю третью');
-    checkWinPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
-  } else if (checkEmptyCellPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
-    console.log('нашел у Игрока две в ряд, блокирую');
-    checkWinPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
-  }
-
-  checkWinPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш Игрок
-  checkWinPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
+  addMainLogic(event); // главная рабочая функция
 }, { once: true });
 
 
@@ -199,33 +107,72 @@ function rndInt(min, max) {
   return Math.floor(random);
 }
 
-/**пометить ячейку, ход Игрок -!!!!!!!!!  не используется */
-function markCellPlayer(a) {
-  a.classList.add('board__item--player');
+/**функция - "listener" для ячейки*/
+function addMainLogic(a) {
+  let target = a.target; // где был клик?
+  markCellPlayer(target); // применить стили для ячейки, ход Игрок
+
+  if (checkEmptyCellPC(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
+    console.log('нашел у ПК две в ряд, ставлю третью');
+    checkWinPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
+  } else if (checkEmptyCellPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
+    console.log('нашел у Игрока две в ряд, блокирую');
+    checkWinPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
+  }
+
+  checkWinPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш Игрок
+  checkWinPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
 }
 
-/**пометить ячейку, ход ПК */
+/**применить стили для ячейки, ход Игрок*/
+function markCellPlayer(a) {
+  if (!(a.classList.contains('board__item--player') || a.classList.contains('board__item--pc'))) { //клик на свободной ячейке?
+    a.classList.add('board__item--player'); // установить стили для кликнутой ячейки
+  } else {
+    console.log('эта ячейка занята!');
+    return;
+  }
+}
+
+/**применить стили для ячейки, ход ПК */
 function markCellPC(a) {
   cells[a].classList.add('board__item--pc');
 }
 
 /**ход ПК в  СВОБОДНЫЙ угол*/
+// function moveCorner() {
+//   let n = 0;
+//   while (n < 10) {
+//     n = rndInt(0, 8);// записать в переменную то, что вернет функция
+//     console.log('n до условия = ' + n);
+//     if (n == 0 || n == 2 || n == 6 || n == 8) { // найден № угла
+//       if (!cells[n].classList.contains('board__item--player')) { //проверка, свободен-ли угол от хода Игрока
+//         if (!cells[n].classList.contains('board__item--pc')) {//проверка, свободен-ли угол от хода ПК
+//           console.log('n после условия= ' + n);
+//           markCellPC(n);
+//           break;
+//         }
+//       }
+//     }
+//   }
+// }
+
+/**ход ПК в  СВОБОДНЫЙ угол-2*/
 function moveCorner() {
   let n = 0;
   while (n < 10) {
     n = rndInt(0, 8);// записать в переменную то, что вернет функция
     console.log('n до условия = ' + n);
     if (n == 0 || n == 2 || n == 6 || n == 8) { // найден № угла
-      if (!cells[n].classList.contains('board__item--player')) { //проверка, свободен-ли угол от хода Игрока
-        if (!cells[n].classList.contains('board__item--pc')) {//проверка, свободен-ли угол от хода ПК
-          console.log('n после условия= ' + n);
-          markCellPC(n);
-          break;
-        }
+      if (!(cells[n].classList.contains('board__item--player') || cells[n].classList.contains('board__item--pc'))) {//проверка, свободен-ли выбранный угол от хода Игрока и хода ПК
+        console.log('n после условия= ' + n);
+        markCellPC(n);
+        break;
       }
     }
   }
 }
+
 
 /**ход ПК в "1/4 креста"*/
 function moveX(cell1, cell2) {
