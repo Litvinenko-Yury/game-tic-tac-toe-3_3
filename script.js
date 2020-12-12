@@ -12,11 +12,10 @@ const cells = document.querySelectorAll('.board__item');
 cells[0].addEventListener('click', function (e) {
   console.log('клик на cells[0]');
   let target = e.target; // где был клик?
-  if (target.classList.contains('board__item--player') || target.classList.contains('board__item--pc')) { //клик на свободной ячейке?
-    console.log('эта ячейка занята!');
-  } else {
-    //target.classList.add('board__item--player'); // установить стили для кликнутой ячейки */
+  if (!(target.classList.contains('board__item--player') || target.classList.contains('board__item--pc'))) { //клик на свободной ячейке?
     markCellPlayer(target);// установить стили для кликнутой ячейки
+  } else {
+    console.log('эта ячейка занята!');
   }
 
   if (checkEmptyCellPC(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
@@ -34,11 +33,10 @@ cells[0].addEventListener('click', function (e) {
 cells[1].addEventListener('click', function (e) {
   console.log('клик на cells[1]');
   let target = e.target; // где был клик?
-  if (target.classList.contains('board__item--player') || target.classList.contains('board__item--pc')) { //клик на свободной ячейке?
-    console.log('эта ячейка занята!');
-  } else {
-    //target.classList.add('board__item--player'); // установить стили для кликнутой ячейки */
+  if (!(target.classList.contains('board__item--player') || target.classList.contains('board__item--pc'))) { //клик на свободной ячейке?
     markCellPlayer(target);// установить стили для кликнутой ячейки
+  } else {
+    console.log('эта ячейка занята!');
   }
 
   if (checkEmptyCellPC(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
@@ -56,11 +54,10 @@ cells[1].addEventListener('click', function (e) {
 cells[2].addEventListener('click', function (e) {
   console.log('клик на cells[2]');
   let target = e.target; // где был клик?
-  if (target.classList.contains('board__item--player') || target.classList.contains('board__item--pc')) { //клик на свободной ячейке?
-    console.log('эта ячейка занята!');
-  } else {
-    //target.classList.add('board__item--player'); // установить стили для кликнутой ячейки */
+  if (!(target.classList.contains('board__item--player') || target.classList.contains('board__item--pc'))) { //клик на свободной ячейке?
     markCellPlayer(target);// установить стили для кликнутой ячейки
+  } else {
+    console.log('эта ячейка занята!');
   }
 
   if (checkEmptyCellPC(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
@@ -78,11 +75,10 @@ cells[2].addEventListener('click', function (e) {
 cells[3].addEventListener('click', function (e) {
   console.log('клик на cells[3]');
   let target = e.target; // где был клик?
-  if (target.classList.contains('board__item--player') || target.classList.contains('board__item--pc')) { //клик на свободной ячейке?
-    console.log('эта ячейка занята!');
-  } else {
-    //target.classList.add('board__item--player'); // установить стили для кликнутой ячейки */
+  if (!(target.classList.contains('board__item--player') || target.classList.contains('board__item--pc'))) { //клик на свободной ячейке?
     markCellPlayer(target);// установить стили для кликнутой ячейки
+  } else {
+    console.log('эта ячейка занята!');
   }
 
   if (checkEmptyCellPC(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
@@ -101,22 +97,21 @@ cells[4].addEventListener('click', function (e) {
   console.log('клик на cells[4]');
   let target = e.target; // где был клик?
 
-  if (target.classList.contains('board__item--player') || target.classList.contains('board__item--pc')) { //клик на свободной ячейке?
-    console.log('эта ячейка занята!');
-  } else {
+  if (!(target.classList.contains('board__item--player') || target.classList.contains('board__item--pc'))) { //клик на свободной ячейке?
     markCellPlayer(target);// установить стили для кликнутой ячейки
     moveCorner(); // ПК - сделать ход в любой угол
+  } else {
+    console.log('эта ячейка занята!');
   }
 }, { once: true });
 
 cells[5].addEventListener('click', function (e) {
   console.log('клик на cells[5]');
   let target = e.target; // где был клик?
-  if (target.classList.contains('board__item--player') || target.classList.contains('board__item--pc')) { //клик на свободной ячейке?
-    console.log('эта ячейка занята!');
-  } else {
-    //target.classList.add('board__item--player'); // установить стили для кликнутой ячейки */
+  if (!(target.classList.contains('board__item--player') || target.classList.contains('board__item--pc'))) { //клик на свободной ячейке?
     markCellPlayer(target);// установить стили для кликнутой ячейки
+  } else {
+    console.log('эта ячейка занята!');
   }
 
   if (checkEmptyCellPC(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
@@ -134,11 +129,10 @@ cells[5].addEventListener('click', function (e) {
 cells[6].addEventListener('click', function (e) {
   console.log('клик на cells[6]');
   let target = e.target; // где был клик?
-  if (target.classList.contains('board__item--player') || target.classList.contains('board__item--pc')) { //клик на свободной ячейке?
-    console.log('эта ячейка занята!');
-  } else {
-    //target.classList.add('board__item--player'); // установить стили для кликнутой ячейки */
+  if (!(target.classList.contains('board__item--player') || target.classList.contains('board__item--pc'))) { //клик на свободной ячейке?
     markCellPlayer(target);// установить стили для кликнутой ячейки
+  } else {
+    console.log('эта ячейка занята!');
   }
 
   if (checkEmptyCellPC(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
@@ -156,11 +150,10 @@ cells[6].addEventListener('click', function (e) {
 cells[7].addEventListener('click', function (e) {
   console.log('клик на cells[7]');
   let target = e.target; // где был клик?
-  if (target.classList.contains('board__item--player') || target.classList.contains('board__item--pc')) { //клик на свободной ячейке?
-    console.log('эта ячейка занята!');
-  } else {
-    //target.classList.add('board__item--player'); // установить стили для кликнутой ячейки */
+  if (!(target.classList.contains('board__item--player') || target.classList.contains('board__item--pc'))) { //клик на свободной ячейке?
     markCellPlayer(target);// установить стили для кликнутой ячейки
+  } else {
+    console.log('эта ячейка занята!');
   }
 
   if (checkEmptyCellPC(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
@@ -178,11 +171,10 @@ cells[7].addEventListener('click', function (e) {
 cells[8].addEventListener('click', function (e) {
   console.log('клик на cells[8]');
   let target = e.target; // где был клик?
-  if (target.classList.contains('board__item--player') || target.classList.contains('board__item--pc')) { //клик на свободной ячейке?
-    console.log('эта ячейка занята!');
-  } else {
-    //target.classList.add('board__item--player'); // установить стили для кликнутой ячейки */
+  if (!(target.classList.contains('board__item--player') || target.classList.contains('board__item--pc'))) { //клик на свободной ячейке?
     markCellPlayer(target);// установить стили для кликнутой ячейки
+  } else {
+    console.log('эта ячейка занята!');
   }
 
   if (checkEmptyCellPC(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
