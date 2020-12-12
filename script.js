@@ -29,16 +29,16 @@ cells[3].addEventListener('click', function (e) {
   let target = e.target; // где был клик?
   markCellPlayer(target); // применить стили для ячейки, ход Игрок
 
-  if (checkEmptyCellPC(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
+  if (checkLastEmptyCellPC(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
     console.log('нашел у ПК две в ряд, ставлю третью');
-    checkWinPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
-  } else if (checkEmptyCellPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
+    checkVictoryPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
+  } else if (checkLastEmptyCellPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
     console.log('нашел у Игрока две в ряд, блокирую');
-    checkWinPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
+    checkVictoryPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
   }
 
-  checkWinPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш Игрок
-  checkWinPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
+  checkVictoryPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш Игрок
+  checkVictoryPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
 }, { once: true });
 
 cells[4].addEventListener('click', function (e) {
@@ -58,16 +58,16 @@ cells[5].addEventListener('click', function (e) {
   let target = e.target; // где был клик?
   markCellPlayer(target); // применить стили для ячейки, ход Игрок
 
-  if (checkEmptyCellPC(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
+  if (checkLastEmptyCellPC(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
     console.log('нашел у ПК две в ряд, ставлю третью');
-    checkWinPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
-  } else if (checkEmptyCellPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
+    checkVictoryPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
+  } else if (checkLastEmptyCellPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
     console.log('нашел у Игрока две в ряд, блокирую');
-    checkWinPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
+    checkVictoryPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
   }
 
-  checkWinPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш Игрок
-  checkWinPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
+  checkVictoryPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш Игрок
+  checkVictoryPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
 }, { once: true });
 
 cells[6].addEventListener('click', function (event) {
@@ -80,16 +80,16 @@ cells[7].addEventListener('click', function (e) {
   let target = e.target; // где был клик?
   markCellPlayer(target); // применить стили для ячейки, ход Игрок
 
-  if (checkEmptyCellPC(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
+  if (checkLastEmptyCellPC(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
     console.log('нашел у ПК две в ряд, ставлю третью');
-    checkWinPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
-  } else if (checkEmptyCellPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
+    checkVictoryPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
+  } else if (checkLastEmptyCellPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
     console.log('нашел у Игрока две в ряд, блокирую');
-    checkWinPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
+    checkVictoryPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
   }
 
-  checkWinPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш Игрок
-  checkWinPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
+  checkVictoryPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш Игрок
+  checkVictoryPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
 }, { once: true });
 
 cells[8].addEventListener('click', function (event) {
@@ -101,36 +101,48 @@ cells[8].addEventListener('click', function (event) {
 /*********** */
 /**ФУНКЦИИ */
 
-/**функция случайное число в диапазоне */
-function rndInt(min, max) {
-  let random = min + Math.random() * (max + 1 - min);
-  return Math.floor(random);
+/**функция случайное число в диапазоне, кратное num */
+function rndInt(min, max, num) {
+  let i = 0;
+  while (i < 10) {
+    let random = Math.floor(min + Math.random() * (max + 1 - min)); // генерируем числов в диапазоне
+    let rem = random % num; // проверка деления без остатка
+
+    if (rem == 0) {
+      console.log('rndInt: return random = ' + random);
+      return random;
+    }
+  }
 }
 
-/**функция - "listener" для ячейки*/
+/**функция - главной логики для ячейки*/
 function addMainLogic(a) {
   let target = a.target; // где был клик?
-  markCellPlayer(target); // применить стили для ячейки, ход Игрок
 
-  if (checkEmptyCellPC(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
-    console.log('нашел у ПК две в ряд, ставлю третью');
-    checkWinPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
-  } else if (checkEmptyCellPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8)) {
-    console.log('нашел у Игрока две в ряд, блокирую');
-    checkWinPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
+  if (target.classList.contains('board__item--pc')) {
+    // если ячейка занята ПК, ничего не делать
+    console.log('addMainLogic(): эта ячейка занята ПК, ничего не делать');
+    console.log('addMainLogic(): eventListener на этой ячейке больше не сработает, т.к. у него { once: true }');
+  } else {
+    console.log('addMainLogic(): эта ячейка свободна, работаю...');
+    markCellPlayer(target); // применить стили для ячейки, ход Игрок
+    checkVictoryPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш Игрок
+
+    if (checkLastEmptyCellPC(0, 1, 2, 3, 4, 5, 6, 7, 8)) { // проверка: заполненены две ячейки в линии ПК - ставить третью, это выигрыш
+      checkVictoryPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
+    } else if (checkLastEmptyCellPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8)) {// проверка: заполненены две ячейки в линии Игрок - блокировать линию Игрока
+      checkVictoryPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
+    }
   }
-
-  checkWinPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш Игрок
-  checkWinPC(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
 }
 
 /**применить стили для ячейки, ход Игрок*/
 function markCellPlayer(a) {
   if (!(a.classList.contains('board__item--player') || a.classList.contains('board__item--pc'))) { //клик на свободной ячейке?
     a.classList.add('board__item--player'); // установить стили для кликнутой ячейки
+    console.log('markCellPlayer(): применил стили для ячейки, ход Игрока');
   } else {
     console.log('эта ячейка занята!');
-    return;
   }
 }
 
@@ -141,25 +153,27 @@ function markCellPC(a) {
 
 /**ход ПК в  СВОБОДНЫЙ угол*/
 function moveCorner() {
+  console.log('moveCorner(): старт');
   let n = 0;
   while (n < 10) {
-    n = rndInt(0, 8);// записать в переменную то, что вернет функция
-    console.log('n до условия = ' + n);
-    if (n == 0 || n == 2 || n == 6 || n == 8) { // найден № угла
-      if (!(cells[n].classList.contains('board__item--player') || cells[n].classList.contains('board__item--pc'))) {//проверка, свободен-ли выбранный угол от хода Игрока и хода ПК
-        console.log('n после условия= ' + n);
-        markCellPC(n);
-        break;
-      }
+    console.log('moveCorner(): обращаюсь к rndInt();');
+    n = rndInt(0, 8, 2);// записать в переменную то, что вернет функция
+    console.log('moveCorner(): n до условия = ' + n);
+    if ((n == 0 || n == 2 || n == 6 || n == 8) && (!(cells[n].classList.contains('board__item--player') || cells[n].classList.contains('board__item--pc')))) { // найден № угла. Проверить, свободен-ли выбранный угол от хода Игрока и хода ПК
+      console.log('moveCorner(): n после условия= ' + n);
+      console.log('moveCorner(): хожу в угол, ячейка № ' + n);
+      console.log('moveCorner(): стоп');
+      markCellPC(n);
+      break;
     }
   }
 }
 
-/**ход ПК в "1/4 креста"*/
+/**ход ПК в "1/4 креста" - !!!!! ПОКА НЕ ИСПОЛЬЗУЕТСЯ*/
 function moveX(cell1, cell2) {
   let n = 0;
   while (n < 10) {
-    n = rndInt(0, 6);// записать в переменную то, что вернет функция
+    n = rndInt(0, 6, 2);// записать в переменную то, что вернет функция
     if (n == cell1 || n == cell2) {
       markCellPC(n);
       break;
@@ -168,11 +182,13 @@ function moveX(cell1, cell2) {
 }
 
 /**проверка -  если у ПК заполненены две ячейки в линии - ставить третью*/
-function checkEmptyCellPC(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
+function checkLastEmptyCellPC(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
   //условная матрица ячеек
   //[aa, ab, ac]
   //[ba, bb, bc]
   //[ca, cb, cc]
+
+  console.log('checkLastEmptyCellPC(): старт функции');
 
   //1-я горизонталь
   if (cells[aa].classList.contains('board__item--pc') && cells[ab].classList.contains('board__item--pc')) {
@@ -285,241 +301,146 @@ function checkEmptyCellPC(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
     cells[ca].classList.add('board__item--pc');
     return true;
   }
+
+  console.log('checkLastEmptyCellPC(): конец функции');
 }
 
-/**проверка -  если у ИГРОК заполненены две ячейки в линии - блокировать третью*/
-function checkEmptyCellPlayer(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
+/**ТЕСТ - проверка -  если у ПК заполненены две ячейки в линии - ставить третью*/
+function checkLastEmptyCellPC1111(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
   //условная матрица ячеек
   //[aa, ab, ac]
   //[ba, bb, bc]
   //[ca, cb, cc]
 
+  function checkLine(a1, a2, a3) {
+    if (cells[a1].classList.contains('board__item--pc') && cells[a2].classList.contains('board__item--pc')) {
+      cells[a3].classList.add('board__item--pc');
+      return true;
+    }
+  }
+
   //1-я горизонталь
-  if (cells[ac].classList.contains('board__item--pc')) {
-    console.log('игрок олень, но ничего не поделать: [ac] - занят, нужно ходить в другую ячейку, в угол');
-    moveCorner();
-    return;
-  } else if (cells[aa].classList.contains('board__item--player') && cells[ab].classList.contains('board__item--player')) {
-    cells[ac].classList.add('board__item--pc');
-    return true;
-  }
-  if (cells[ab].classList.contains('board__item--pc')) {
-    console.log('игрок олень, но ничего не поделать: [ab] - занят, нужно ходить в другую ячейку');
-    moveCorner();
-    return;
-  } else if (cells[aa].classList.contains('board__item--player') && cells[ac].classList.contains('board__item--player')) {
-    cells[ab].classList.add('board__item--pc');
-    return true;
-  }
-  if (cells[aa].classList.contains('board__item--pc')) {
-    console.log('игрок олень, но ничего не поделать: [aa] - занят, нужно ходить в другую ячейку');
-    moveCorner();
-    return;
-  } else if (cells[ab].classList.contains('board__item--player') && cells[ac].classList.contains('board__item--player')) {
-    cells[aa].classList.add('board__item--pc');
-    return true;
-  }
+  checkLine(aa, ab, ac);
+  checkLine(aa, ac, ab);
+  checkLine(ab, ac, aa);
 
   //2-я горизонталь
-  if (cells[bc].classList.contains('board__item--pc')) {
-    console.log('игрок олень, но ничего не поделать: [bc] - занят, нужно ходить в другую ячейку');
-    moveCorner();
-    return;
-  } else if (cells[ba].classList.contains('board__item--player') && cells[bb].classList.contains('board__item--player')) {
-    cells[bc].classList.add('board__item--pc');
-    return true;
-  }
-  if (cells[bb].classList.contains('board__item--pc')) {
-    console.log('игрок олень, но ничего не поделать: [bb] - занят, нужно ходить в другую ячейку');
-    moveCorner();
-    return;
-  } else if (cells[ba].classList.contains('board__item--player') && cells[bc].classList.contains('board__item--player')) {
-    cells[bb].classList.add('board__item--pc');
-    return true;
-  }
-  if (cells[ba].classList.contains('board__item--pc')) {
-    console.log('игрок олень, но ничего не поделать: [ba] - занят, нужно ходить в другую ячейку');
-    moveCorner();
-    return;
-  } else if (cells[bb].classList.contains('board__item--player') && cells[bc].classList.contains('board__item--player')) {
-    cells[ba].classList.add('board__item--pc');
-    return true;
-  }
+  checkLine(ba, bb, bc);
+  checkLine(ba, bc, bb);
+  checkLine(bb, bc, ba);
 
   //3-я горизонталь
-  if (cells[cc].classList.contains('board__item--pc')) {
-    console.log('игрок олень, но ничего не поделать: [cc] - занят, нужно ходить в другую ячейку');
-    moveCorner();
-    return;
-  } else if (cells[ca].classList.contains('board__item--player') && cells[cb].classList.contains('board__item--player')) {
-    cells[cc].classList.add('board__item--pc');
-    return true;
-  }
-  if (cells[cb].classList.contains('board__item--pc')) {
-    console.log('игрок олень, но ничего не поделать: [cb] - занят, нужно ходить в другую ячейку');
-    moveCorner();
-    return;
-  } else if (cells[ca].classList.contains('board__item--player') && cells[cc].classList.contains('board__item--player')) {
-    cells[cb].classList.add('board__item--pc');
-    return true;
-  }
-  if (cells[ca].classList.contains('board__item--pc')) {
-    console.log('игрок олень, но ничего не поделать: [ca] - занят, нужно ходить в другую ячейку');
-    moveCorner();
-    return;
-  } else if (cells[cb].classList.contains('board__item--player') && cells[cc].classList.contains('board__item--player')) {
-    cells[ca].classList.add('board__item--pc');
-    return true;
-  }
+  checkLine(ca, cb, cc);
+  checkLine(ca, cc, cb);
+  checkLine(cb, cc, ca);
 
   //1-я вертикаль
-  if (cells[ca].classList.contains('board__item--pc')) {
-    console.log('игрок олень, но ничего не поделать: [ca] - занят, нужно ходить в другую ячейку');
-    moveCorner();
-    return;
-  } else if (cells[aa].classList.contains('board__item--player') && cells[ba].classList.contains('board__item--player')) {
-    cells[ca].classList.add('board__item--pc');
-    return true;
-  }
-  if (cells[ba].classList.contains('board__item--pc')) {
-    console.log('игрок олень, но ничего не поделать: [ba] - занят, нужно ходить в другую ячейку');
-    moveCorner();
-    return;
-  } else if (cells[aa].classList.contains('board__item--player') && cells[ca].classList.contains('board__item--player')) {
-    cells[ba].classList.add('board__item--pc');
-    return true;
-  }
-  if (cells[aa].classList.contains('board__item--pc')) {
-    console.log('игрок олень, но ничего не поделать: [aa] - занят, нужно ходить в другую ячейку');
-    moveCorner();
-    return;
-  } else if (cells[ba].classList.contains('board__item--player') && cells[ca].classList.contains('board__item--player')) {
-    cells[aa].classList.add('board__item--pc');
-    return true;
-  }
+  checkLine(aa, ba, ca);
+  checkLine(aa, ca, ba);
+  checkLine(ba, ca, aa);
 
   //2-я вертикаль
-  if (cells[cb].classList.contains('board__item--pc')) {
-    console.log('игрок олень, но ничего не поделать: [cb] - занят, нужно ходить в другую ячейку');
-    moveCorner();
-    return;
-  } else if (cells[ab].classList.contains('board__item--player') && cells[bb].classList.contains('board__item--player')) {
-    cells[cb].classList.add('board__item--pc');
-    return true;
-  }
-  if (cells[bb].classList.contains('board__item--pc')) {
-    console.log('игрок олень, но ничего не поделать: [bb] - занят, нужно ходить в другую ячейку');
-    moveCorner();
-    return;
-  } else if (cells[ab].classList.contains('board__item--player') && cells[cb].classList.contains('board__item--player')) {
-    cells[bb].classList.add('board__item--pc');
-    return true;
-  }
-  if (cells[ab].classList.contains('board__item--pc')) {
-    console.log('игрок олень, но ничего не поделать: [ab] - занят, нужно ходить в другую ячейку');
-    moveCorner();
-    return;
-  } else if (cells[bb].classList.contains('board__item--player') && cells[cb].classList.contains('board__item--player')) {
-    cells[ab].classList.add('board__item--pc');
-    return true;
-  }
+  checkLine(ab, bb, cb);
+  checkLine(ab, cb, bb);
+  checkLine(bb, cb, ab);
 
   //3-я вертикаль
-  if (cells[cc].classList.contains('board__item--pc')) {
-    console.log('игрок олень, но ничего не поделать: [cc] - занят, нужно ходить в другую ячейку');
-    moveCorner();
-    return;
-  } else if (cells[ac].classList.contains('board__item--player') && cells[bc].classList.contains('board__item--player')) {
-    cells[cc].classList.add('board__item--pc');
-    return true;
-  }
-  if (cells[bc].classList.contains('board__item--pc')) {
-    console.log('игрок олень, но ничего не поделать: [bc] - занят, нужно ходить в другую ячейку');
-    moveCorner();
-    return;
-  } else if (cells[ac].classList.contains('board__item--player') && cells[cc].classList.contains('board__item--player')) {
-    cells[bc].classList.add('board__item--pc');
-    return true;
-  }
-  if (cells[ac].classList.contains('board__item--pc')) {
-    console.log('игрок олень, но ничего не поделать: [ac] - занят, нужно ходить в другую ячейку');
-    moveCorner();
-    return;
-  } else if (cells[bc].classList.contains('board__item--player') && cells[cc].classList.contains('board__item--player')) {
-    cells[ac].classList.add('board__item--pc');
-    return true;
-  }
-
+  checkLine(ac, bc, cc);
+  checkLine(ac, cc, bc);
+  checkLine(bc, cc, ac);
 
   //1-я диагональ
-  if (cells[cc].classList.contains('board__item--pc')) {
-    console.log('игрок олень, но ничего не поделать: [cc] - занят, нужно ходить в другую ячейку');
-    moveCorner();
-    return;
-  } else if (cells[aa].classList.contains('board__item--player') && cells[bb].classList.contains('board__item--player')) {
-    cells[cc].classList.add('board__item--pc');
-    return true;
-  }
-
-  if (cells[bb].classList.contains('board__item--pc')) {
-    console.log('игрок олень, но ничего не поделать: [bb] - занят, нужно ходить в другую ячейку');
-    moveCorner();
-    return;
-  } else if (cells[aa].classList.contains('board__item--player') && cells[cc].classList.contains('board__item--player')) {
-    cells[bb].classList.add('board__item--pc');
-    return true;
-  }
-
-  if (cells[aa].classList.contains('board__item--pc')) {
-    console.log('игрок олень, но ничего не поделать: [aa] - занят, нужно ходить в другую ячейку');
-    moveCorner();
-    return;
-  } else if (cells[bb].classList.contains('board__item--player') && cells[cc].classList.contains('board__item--player')) {
-    cells[aa].classList.add('board__item--pc');
-    return true;
-  }
+  checkLine(aa, bb, cc);
+  checkLine(aa, cc, bb);
+  checkLine(bb, cc, aa);
 
   //2-я диагональ
-  if (cells[ac].classList.contains('board__item--pc')) {
-    console.log('игрок олень, но ничего не поделать: [ac] - занят, нужно ходить в другую ячейку');
-    moveCorner();
-    return;
-  } else if (cells[ca].classList.contains('board__item--player') && cells[bb].classList.contains('board__item--player')) {
-    cells[ac].classList.add('board__item--pc');
-    return true;
+  checkLine(ca, bb, ac);
+  checkLine(ca, ac, bb);
+  checkLine(bb, ac, ca);
+
+}
+
+/**проверка -  если у ИГРОКа заполненены две ячейки в линии - блокировать Игрока в линии*/
+function checkLastEmptyCellPlayer(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
+  //условная матрица ячеек
+  //[aa, ab, ac]
+  //[ba, bb, bc]
+  //[ca, cb, cc]
+
+  console.log('checkLastEmptyCellPlayer(): старт функции');
+
+  function checkLine(a1, a2, a3) {
+    if (cells[a1].classList.contains('board__item--player') && cells[a2].classList.contains('board__item--player')) {
+      console.log(`checkLastEmptyCellPlayer(): нашел совпадение - у Игрока две занятые ячейки в линии ${a1} - ${a2} - ${a3}`);
+      if (cells[a3].classList.contains('board__item--pc')) {
+        //если третья в линии занято ПК, тогда ходить в угол
+        console.log(`checkLastEmptyCellPlayer(): третья в линии ${a1} - ${a2} - ${a3} - занято ПК, хожу в угол`);
+        moveCorner();
+      } else {
+        console.log('checkLastEmptyCellPlayer: блокирую линию Игрока');
+        cells[a3].classList.add('board__item--pc'); // блокировать линию Игрока
+      }
+    }
   }
 
-  if (cells[bb].classList.contains('board__item--pc')) {
-    console.log('игрок олень, но ничего не поделать: [bb] - занят, нужно ходить в другую ячейку');
-    moveCorner();
-    return;
-  } else if (cells[ca].classList.contains('board__item--player') && cells[ac].classList.contains('board__item--player')) {
-    cells[bb].classList.add('board__item--player');
-    return true;
-  }
+  //1-я горизонталь
+  checkLine(aa, ab, ac);
+  checkLine(aa, ac, ab);
+  checkLine(ab, ac, aa);
 
-  if (cells[ca].classList.contains('board__item--pc')) {
-    console.log('игрок олень, но ничего не поделать: [ca] - занят, нужно ходить в другую ячейку');
-    moveCorner();
-    return;
-  } else if (cells[bb].classList.contains('board__item--player') && cells[ac].classList.contains('board__item--player')) {
-    cells[ca].classList.add('board__item--pc');
-    return true;
-  }
+  //2-я горизонталь
+  checkLine(ba, bb, bc);
+  checkLine(ba, bc, bb);
+  checkLine(bb, bc, ba);
+
+  //3-я горизонталь
+  checkLine(ca, cb, cc);
+  checkLine(ca, cc, cb);
+  checkLine(cb, cc, ca);
+
+  //1-я вертикаль
+  checkLine(aa, ba, ca);
+  checkLine(aa, ca, ba);
+  checkLine(ba, ca, aa);
+
+  //2-я вертикаль
+  checkLine(ab, bb, cb);
+  checkLine(ab, cb, bb);
+  checkLine(bb, cb, ab);
+
+  //3-я вертикаль
+  checkLine(ac, bc, cc);
+  checkLine(ac, cc, bc);
+  checkLine(bc, cc, ac);
+
+  //1-я диагональ
+  checkLine(aa, bb, cc);
+  checkLine(aa, cc, bb);
+  checkLine(bb, cc, aa);
+
+  //2-я диагональ
+  checkLine(ca, bb, ac);
+  checkLine(ca, ac, bb);
+  checkLine(bb, ac, ca);
+
+  console.log('checkLastEmptyCellPlayer(): конец функции');
 }
 
 /**проверка выигыша Игрок*/
-function checkWinPlayer(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
+function checkVictoryPlayer(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
   //условная матрица ячеек
   //[aa, ab, ac]
   //[ba, bb, bc]
   //[ca, cb, cc]
 
+  console.log('checkVictoryPlayer(): отработал');
   //1-я горизонталь
   if (cells[aa].classList.contains('board__item--player') && cells[ab].classList.contains('board__item--player') && cells[ac].classList.contains('board__item--player')) {
     cells[aa].classList.add('board__item--winning');
     cells[ab].classList.add('board__item--winning');
     cells[ac].classList.add('board__item--winning');
+    return;
   }
 
   //2-я горизонталь
@@ -527,6 +448,7 @@ function checkWinPlayer(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
     cells[ba].classList.add('board__item--winning');
     cells[bb].classList.add('board__item--winning');
     cells[bc].classList.add('board__item--winning');
+    return;
   }
 
   //3-я горизонталь
@@ -534,6 +456,7 @@ function checkWinPlayer(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
     cells[ca].classList.add('board__item--winning');
     cells[cb].classList.add('board__item--winning');
     cells[cc].classList.add('board__item--winning');
+    return;
   }
 
   //1-я вертикаль
@@ -541,6 +464,7 @@ function checkWinPlayer(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
     cells[aa].classList.add('board__item--winning');
     cells[ba].classList.add('board__item--winning');
     cells[ca].classList.add('board__item--winning');
+    return;
   }
 
   //2-я вертикаль
@@ -548,6 +472,7 @@ function checkWinPlayer(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
     cells[ab].classList.add('board__item--winning');
     cells[bb].classList.add('board__item--winning');
     cells[cb].classList.add('board__item--winning');
+    return;
   }
 
   //3-я вертикаль
@@ -555,6 +480,7 @@ function checkWinPlayer(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
     cells[ac].classList.add('board__item--winning');
     cells[bc].classList.add('board__item--winning');
     cells[cc].classList.add('board__item--winning');
+    return;
   }
 
   //1-я диагональ
@@ -562,6 +488,7 @@ function checkWinPlayer(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
     cells[aa].classList.add('board__item--winning');
     cells[bb].classList.add('board__item--winning');
     cells[cc].classList.add('board__item--winning');
+    return;
   }
 
   //2-я диагональ
@@ -569,21 +496,25 @@ function checkWinPlayer(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
     cells[ca].classList.add('board__item--winning');
     cells[bb].classList.add('board__item--winning');
     cells[ac].classList.add('board__item--winning');
+    return;
   }
 }
 
 /**проверка выигыша ПК*/
-function checkWinPC(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
+function checkVictoryPC(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
   //условная матрица ячеек
   //[aa, ab, ac]
   //[ba, bb, bc]
   //[ca, cb, cc]
+
+  console.log('checkVictoryPC(): отработал');
 
   //1-я горизонталь
   if (cells[aa].classList.contains('board__item--pc') && cells[ab].classList.contains('board__item--pc') && cells[ac].classList.contains('board__item--pc')) {
     cells[aa].classList.add('board__item--winning');
     cells[ab].classList.add('board__item--winning');
     cells[ac].classList.add('board__item--winning');
+    return;
   }
 
   //2-я горизонталь
@@ -591,6 +522,7 @@ function checkWinPC(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
     cells[ba].classList.add('board__item--winning');
     cells[bb].classList.add('board__item--winning');
     cells[bc].classList.add('board__item--winning');
+    return;
   }
 
   //3-я горизонталь
@@ -598,6 +530,7 @@ function checkWinPC(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
     cells[ca].classList.add('board__item--winning');
     cells[cb].classList.add('board__item--winning');
     cells[cc].classList.add('board__item--winning');
+    return;
   }
 
   //1-я вертикаль
@@ -605,6 +538,7 @@ function checkWinPC(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
     cells[aa].classList.add('board__item--winning');
     cells[ba].classList.add('board__item--winning');
     cells[ca].classList.add('board__item--winning');
+    return;
   }
 
   //2-я вертикаль
@@ -612,6 +546,7 @@ function checkWinPC(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
     cells[ab].classList.add('board__item--winning');
     cells[bb].classList.add('board__item--winning');
     cells[cb].classList.add('board__item--winning');
+    return;
   }
 
   //3-я вертикаль
@@ -619,6 +554,7 @@ function checkWinPC(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
     cells[ac].classList.add('board__item--winning');
     cells[bc].classList.add('board__item--winning');
     cells[cc].classList.add('board__item--winning');
+    return;
   }
 
   //1-я диагональ
@@ -626,6 +562,7 @@ function checkWinPC(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
     cells[aa].classList.add('board__item--winning');
     cells[bb].classList.add('board__item--winning');
     cells[cc].classList.add('board__item--winning');
+    return;
   }
 
   //2-я диагональ
@@ -633,6 +570,6 @@ function checkWinPC(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
     cells[ca].classList.add('board__item--winning');
     cells[bb].classList.add('board__item--winning');
     cells[ac].classList.add('board__item--winning');
+    return;
   }
 }
-
