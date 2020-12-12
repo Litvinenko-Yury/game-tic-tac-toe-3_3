@@ -140,24 +140,6 @@ function markCellPC(a) {
 }
 
 /**ход ПК в  СВОБОДНЫЙ угол*/
-// function moveCorner() {
-//   let n = 0;
-//   while (n < 10) {
-//     n = rndInt(0, 8);// записать в переменную то, что вернет функция
-//     console.log('n до условия = ' + n);
-//     if (n == 0 || n == 2 || n == 6 || n == 8) { // найден № угла
-//       if (!cells[n].classList.contains('board__item--player')) { //проверка, свободен-ли угол от хода Игрока
-//         if (!cells[n].classList.contains('board__item--pc')) {//проверка, свободен-ли угол от хода ПК
-//           console.log('n после условия= ' + n);
-//           markCellPC(n);
-//           break;
-//         }
-//       }
-//     }
-//   }
-// }
-
-/**ход ПК в  СВОБОДНЫЙ угол-2*/
 function moveCorner() {
   let n = 0;
   while (n < 10) {
@@ -172,7 +154,6 @@ function moveCorner() {
     }
   }
 }
-
 
 /**ход ПК в "1/4 креста"*/
 function moveX(cell1, cell2) {
