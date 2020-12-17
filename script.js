@@ -103,10 +103,12 @@ function addMainLogic(a) {
     if (checkVictoryPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8)) {//проверить выигрыш Игрок
       return; // если true - выйти из функции
     } else if (checkLastEmptyCellPC(0, 1, 2, 3, 4, 5, 6, 7, 8)) { // проверка: заполненены две ячейки в линии ПК - ставить третью, это выигрыш
-      checkVictoryPC111(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
+      //checkVictoryPC111(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
+      checkVictoryPC(); //проверить выигрыш ПК
       return;
     } else if (checkLastEmptyCellPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8)) {// проверка: заполненены две ячейки в линии Игрок - блокировать линию Игрока
-      checkVictoryPC111(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
+      //checkVictoryPC111(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
+      checkVictoryPC(); //проверить выигрыш ПК
       return;
     }
   }
@@ -568,7 +570,7 @@ function checkVictoryPlayer(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
 }
 
 /**проверка выигыша ПК*/
-function checkVictoryPC(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
+function checkVictoryPC() {
   //условная матрица ячеек
   //[aa, ab, ac]
   //[ba, bb, bc]
@@ -576,173 +578,44 @@ function checkVictoryPC(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
 
   console.log('checkVictoryPC(): старт');
 
+  let temp = 0;
+
   function checkLine(a1, a2, a3) {
+    console.log(`checkVictoryPC: начал проверку ${a1} - ${a2} - ${a3}`);
     if (cells[a1].classList.contains('board__item--pc') && cells[a2].classList.contains('board__item--pc') && cells[a3].classList.contains('board__item--pc')) {
       cells[a1].classList.add('board__item--winning');
       cells[a2].classList.add('board__item--winning');
       cells[a3].classList.add('board__item--winning');
       console.log(`checkVictoryPC: выигрыш ПК в линии ${a1} - ${a2} - ${a3}`);
-      return;
-    }
-  }
-
-  //1-я горизонталь
-  checkLine(aa, ab, ac); //0-1-2
-  checkLine(aa, ac, ab); //0-2-1
-  checkLine(ab, ac, aa); //1-2-0
-
-  //2-я горизонталь
-  checkLine(ba, bb, bc);
-  checkLine(ba, bc, bb);
-  checkLine(bb, bc, ba);
-
-  //3-я горизонталь
-  checkLine(ca, cb, cc);
-  checkLine(ca, cc, cb);
-  checkLine(cb, cc, ca);
-
-  //1-я вертикаль
-  checkLine(aa, ba, ca);
-  checkLine(aa, ca, ba);
-  checkLine(ba, ca, aa);
-
-  //2-я вертикаль
-  checkLine(ab, bb, cb);
-  checkLine(ab, cb, bb);
-  checkLine(bb, cb, ab);
-
-  //3-я вертикаль
-  checkLine(ac, bc, cc);
-  checkLine(ac, cc, bc);
-  checkLine(bc, cc, ac);
-
-  //1-я диагональ
-  checkLine(aa, bb, cc);
-  checkLine(aa, cc, bb);
-  checkLine(bb, cc, aa);
-
-  //2-я диагональ
-  checkLine(ca, bb, ac);
-  checkLine(ca, ac, bb);
-  checkLine(bb, ac, ca);
-
-  console.log('checkVictoryPC(): стоп');
-}
-
-/*********** */
-/**проверка выигыша ПК*/
-function checkVictoryPC111(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
-  //условная матрица ячеек
-  //[aa, ab, ac]
-  //[ba, bb, bc]
-  //[ca, cb, cc]
-
-  console.log('checkVictoryPC()111: старт');
-
-  let temp = 0;
-
-  function checkLine(a1, a2, a3) {
-    console.log(`checkVictoryPC111: начал проверку ${a1} - ${a2} - ${a3}`);
-    if (cells[a1].classList.contains('board__item--pc') && cells[a2].classList.contains('board__item--pc') && cells[a3].classList.contains('board__item--pc')) {
-      cells[a1].classList.add('board__item--winning');
-      cells[a2].classList.add('board__item--winning');
-      cells[a3].classList.add('board__item--winning');
-      console.log(`checkVictoryPC111: выигрыш ПК в линии ${a1} - ${a2} - ${a3}`);
       temp = 1;
+      console.log(`temp = ${temp}`);
       return;
     } else {
-      console.log(`checkVictoryPC111: в линии ${a1} - ${a2} - ${a3} - нет совпадений`);
+      console.log(`checkVictoryPC: в линии ${a1} - ${a2} - ${a3} - нет совпадений`);
       console.log(`temp = ${temp}`);
       return temp; // 0
     }
   }
 
-  //1-я горизонталь
-  if (temp == 0) { //0-1-2
-    checkLine(aa, ab, ac);
-  }
-  if (temp == 0) { //0-2-1
-    checkLine(aa, ac, ab);
-  }
-  if (temp == 0) { //1-2-0
-    checkLine(ab, ac, aa);
+  // проверка горизонтали
+  for (let i = 0; i < 3; i++) {
+    if (temp == 0) {
+      console.log(`передаю в checkLine(): ${i * 3} - ${(i * 3 + 1)} - ${(i * 3 + 2)}`);
+      checkLine(i * 3, (i * 3 + 1), (i * 3 + 2));
+    } else { break; }
   }
 
-  //2-я горизонталь
-  if (temp == 0) { //3-4-5
-    checkLine(ba, bb, bc);
-  }
-  if (temp == 0) { // 3-5-4
-    checkLine(ba, bc, bb);
-  }
-  if (temp == 0) { // 4-5-3
-    checkLine(bb, bc, ba);
+  // проверка вертикали
+  for (let i = 0; i < 3; i++) {
+    if (temp == 0) {
+      console.log(`передаю в checkLine(): ${i} - ${(i + 3)} - ${(i + 6)}`);
+      checkLine(i, (i + 3), (i + 6));
+    } else { break; }
   }
 
-  //3-я горизонталь
-  if (temp == 0) {
-    checkLine(ca, cb, cc); // 6-7-8
-  }
-  if (temp == 0) {
-    checkLine(ca, cc, cb);
-  }
-  if (temp == 0) {
-    checkLine(cb, cc, ca);
-  }
+  //проверка диагоналей
+  if (temp == 0) { checkLine(0, 4, 8); }
+  if (temp == 0) { checkLine(6, 4, 2); }
 
-
-  //1-я вертикаль
-  if (temp == 0) {
-    checkLine(aa, ba, ca); // 0-3-6
-  }
-  if (temp == 0) {
-    checkLine(aa, ca, ba);
-  }
-  if (temp == 0) {
-    checkLine(ba, ca, aa);
-  }
-
-  //2-я вертикаль
-  if (temp == 0) {
-    checkLine(ab, bb, cb); // 1-4-7
-  }
-  if (temp == 0) {
-    checkLine(ab, cb, bb);
-  }
-  if (temp == 0) {
-    checkLine(bb, cb, ab);
-  }
-
-  //3-я вертикаль
-  if (temp == 0) {
-    checkLine(ac, bc, cc); // 2-5-8
-  }
-  if (temp == 0) {
-    checkLine(ac, cc, bc);
-  }
-  if (temp == 0) {
-    checkLine(bc, cc, ac);
-  }
-
-  //1-я диагональ
-  if (temp == 0) {
-    checkLine(aa, bb, cc);
-  }
-  if (temp == 0) {
-    checkLine(aa, cc, bb);
-  }
-  if (temp == 0) {
-    checkLine(bb, cc, aa);
-  }
-
-  //2-я диагональ
-  if (temp == 0) {
-    checkLine(ca, bb, ac); //6-4-2
-  }
-  if (temp == 0) {
-    checkLine(ca, ac, bb);
-  }
-  if (temp == 0) {
-    checkLine(bb, ac, ca);
-  }
+  console.log('checkVictoryPC(): стоп');
 }
