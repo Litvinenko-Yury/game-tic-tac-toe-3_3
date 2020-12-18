@@ -100,14 +100,12 @@ function addMainLogic(a) {
     console.log('addMainLogic(): эта ячейка свободна, работаю...');
     markCellPlayer(target); // применить стили для ячейки, ход Игрок
 
-    if (checkVictoryPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8)) {//проверить выигрыш Игрок
+    if (checkVictoryPlayer() == true) {//проверить выигрыш Игрок
       return; // если true - выйти из функции
     } else if (checkLastEmptyCellPC(0, 1, 2, 3, 4, 5, 6, 7, 8)) { // проверка: заполненены две ячейки в линии ПК - ставить третью, это выигрыш
-      //checkVictoryPC111(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
       checkVictoryPC(); //проверить выигрыш ПК
       return;
     } else if (checkLastEmptyCellPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8)) {// проверка: заполненены две ячейки в линии Игрок - блокировать линию Игрока
-      //checkVictoryPC111(0, 1, 2, 3, 4, 5, 6, 7, 8); //проверить выигрыш ПК
       checkVictoryPC(); //проверить выигрыш ПК
       return;
     }
@@ -508,7 +506,7 @@ function checkLastEmptyCellPlayer(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
 }
 
 /**проверка выигыша Игрок*/
-function checkVictoryPlayer(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
+function checkVictoryPlayer() {
   //условная матрица ячеек
   //[aa, ab, ac]
   //[ba, bb, bc]
@@ -516,57 +514,48 @@ function checkVictoryPlayer(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
 
   console.log('checkVictoryPlayer: старт');
 
+  let temp = 0;
+
   function checkLine(a1, a2, a3) {
+    console.log(`checkVictoryPlayer: начал проверку ${a1} - ${a2} - ${a3}`);
     if (cells[a1].classList.contains('board__item--player') && cells[a2].classList.contains('board__item--player') && cells[a3].classList.contains('board__item--player')) {
-      cells[aa].classList.add('board__item--winning');
-      cells[ab].classList.add('board__item--winning');
-      cells[ac].classList.add('board__item--winning');
-      console.log(`checkVictoryPC: выигрыш ИГРОК в линии ${a1} - ${a2} - ${a3}`);
+      cells[a1].classList.add('board__item--winning');
+      cells[a2].classList.add('board__item--winning');
+      cells[a3].classList.add('board__item--winning');
+      console.log(`checkVictoryPlayer: выигрыш ИГРОК в линии ${a1} - ${a2} - ${a3}`);
+      temp = 1;
+      console.log(`temp = ${temp}`);
       return;
+    } else {
+      console.log(`checkVictoryPlayer: в линии ${a1} - ${a2} - ${a3} - нет совпадений`);
+      console.log(`temp = ${temp}`);
+      return temp; // 0
     }
   }
 
-  //1-я горизонталь
-  checkLine(aa, ab, ac); //0-1-2
-  checkLine(aa, ac, ab); //0-2-1
-  checkLine(ab, ac, aa); //1-2-0
+  // проверка горизонтали
+  for (let i = 0; i < 3; i++) {
+    if (temp == 0) {
+      console.log(`передаю в checkLine(): ${i * 3} - ${(i * 3 + 1)} - ${(i * 3 + 2)}`);
+      checkLine(i * 3, (i * 3 + 1), (i * 3 + 2));
+    } else { break; }
+  }
 
-  //2-я горизонталь
-  checkLine(ba, bb, bc);
-  checkLine(ba, bc, bb);
-  checkLine(bb, bc, ba);
+  // проверка вертикали
+  for (let i = 0; i < 3; i++) {
+    if (temp == 0) {
+      console.log(`передаю в checkLine(): ${i} - ${(i + 3)} - ${(i + 6)}`);
+      checkLine(i, (i + 3), (i + 6));
+    } else { break; }
+  }
 
-  //3-я горизонталь
-  checkLine(ca, cb, cc);
-  checkLine(ca, cc, cb);
-  checkLine(cb, cc, ca);
-
-  //1-я вертикаль
-  checkLine(aa, ba, ca);
-  checkLine(aa, ca, ba);
-  checkLine(ba, ca, aa);
-
-  //2-я вертикаль
-  checkLine(ab, bb, cb);
-  checkLine(ab, cb, bb);
-  checkLine(bb, cb, ab);
-
-  //3-я вертикаль
-  checkLine(ac, bc, cc);
-  checkLine(ac, cc, bc);
-  checkLine(bc, cc, ac);
-
-  //1-я диагональ
-  checkLine(aa, bb, cc);
-  checkLine(aa, cc, bb);
-  checkLine(bb, cc, aa);
-
-  //2-я диагональ
-  checkLine(ca, bb, ac);
-  checkLine(ca, ac, bb);
-  checkLine(bb, ac, ca);
+  //проверка диагоналей
+  if (temp == 0) { checkLine(0, 4, 8); }
+  if (temp == 0) { checkLine(6, 4, 2); }
 
   console.log('checkVictoryPlayer: стоп');
+
+  if (temp == 1) { return true; } else { return false; }
 }
 
 /**проверка выигыша ПК*/
