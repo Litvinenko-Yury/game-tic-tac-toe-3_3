@@ -74,19 +74,7 @@ cells[8].addEventListener('click', function (event) {
 /*********** */
 /**ФУНКЦИИ */
 
-/**функция случайное число в диапазоне, кратное num */
-function rndInt(min, max, num) {
-  let i = 0;
-  while (i < 10) {
-    let random = Math.floor(min + Math.random() * (max + 1 - min)); // генерируем числов в диапазоне
-    let rem = random % num; // проверка деления без остатка
 
-    if (rem == 0) {
-      console.log('rndInt: return random = ' + random);
-      return random;
-    }
-  }
-}
 
 /**функция - главной логики для ячейки*/
 function addMainLogic(a) {
@@ -105,9 +93,23 @@ function addMainLogic(a) {
     } else if (checkLastEmptyCellPC(0, 1, 2, 3, 4, 5, 6, 7, 8)) { // проверка: заполненены две ячейки в линии ПК - ставить третью, это выигрыш
       checkVictoryPC(); //проверить выигрыш ПК
       return;
-    } else if (checkLastEmptyCellPlayer(0, 1, 2, 3, 4, 5, 6, 7, 8)) {// проверка: заполненены две ячейки в линии Игрок - блокировать линию Игрока
+    } else if (checkEmptyCellPlayer() == true) {// проверка: заполненены две ячейки в линии Игрок - блокировать линию Игрока
       checkVictoryPC(); //проверить выигрыш ПК
       return;
+    }
+  }
+}
+
+/**функция случайное число в диапазоне, кратное num */
+function rndInt(min, max, num) {
+  let i = 0;
+  while (i < 10) {
+    let random = Math.floor(min + Math.random() * (max + 1 - min)); // генерируем числов в диапазоне
+    let rem = random % num; // проверка деления без остатка
+
+    if (rem == 0) {
+      console.log('rndInt: return random = ' + random);
+      return random;
     }
   }
 }
@@ -440,69 +442,83 @@ function checkLastEmptyCellPC111111(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
 }
 
 /**проверка -  если у ИГРОКа заполненены две ячейки в линии - блокировать Игрока в линии*/
-function checkLastEmptyCellPlayer(aa, ab, ac, ba, bb, bc, ca, cb, cc) {
+function checkEmptyCellPlayer() {
   //условная матрица ячеек
   //[aa, ab, ac]
   //[ba, bb, bc]
   //[ca, cb, cc]
 
-  console.log('checkLastEmptyCellPlayer(): старт - хочу блок-ть третью(своб-ю) яч.');
+  console.log('*******');
+  console.log('checkEmptyCellPlayer(): старт - хочу блокир.  третью(своб-ю) яч. у ИГРОКА');
 
-  function checkLine(a1, a2, a3) {
-    if (cells[a1].classList.contains('board__item--player') && cells[a2].classList.contains('board__item--player')) {
-      console.log(`checkLastEmptyCellPlayer(): нашел совпадение - у Игрока две занятые ячейки в линии ${a1} - ${a2} - ${a3}`);
-      if (cells[a3].classList.contains('board__item--pc')) {
+  let temp = 0;
+
+  function checkLine(a, b, c) {
+    console.log(`checkEmptyCellPlayer: начал проверку ${a} - ${b} - ${c}`);
+
+    if (cells[a].classList.contains('board__item--player') && cells[b].classList.contains('board__item--player')) {
+      console.log(`checkEmptyCellPlayer(): нашел совпадение - у Игрока две занятые ячейки в линии ${a} - ${b} - ${c}`);
+      if (cells[c].classList.contains('board__item--pc')) {
         //если третья в линии занято ПК, тогда ходить в угол
-        console.log(`checkLastEmptyCellPlayer(): третья в линии ${a1} - ${a2} - ${a3} - уже занято ПК, поэтому хожу в угол`);
-        moveCorner();
+        console.log(`checkEmptyCellPlayer(): третья в линии ${a} - ${b} - ${c} - уже занято ПК, поэтому хожу в угол`);
+        moveCorner(); // ход в угол
+        temp = 1;
+        console.log(`temp = ${temp}`);
+        return;
       } else {
-        console.log('checkLastEmptyCellPlayer: блокирую линию Игрока');
-        cells[a3].classList.add('board__item--pc'); // блокировать линию Игрока
+        console.log('checkEmptyCellPlayer: блокирую линию Игрока');
+        cells[c].classList.add('board__item--pc'); // блокировать линию Игрока
+        temp = 1;
+        console.log(`temp = ${temp}`);
+        return;
       }
     }
   }
 
-  //1-я горизонталь
-  checkLine(aa, ab, ac);
-  checkLine(aa, ac, ab);
-  checkLine(ab, ac, aa);
+  // проверка горизонтали
+  for (let i = 0; i < 3; i++) {
+    if (temp == 0) {
+      let a = i,
+        b = i + 3,
+        c = i + 6;
+      console.log(`1-передаю в checkLine(): ${a} - ${b} - ${c}`);
+      checkLine(a, b, c);
+      console.log(`2-передаю в checkLine(): ${a} - ${c} - ${b}`);
+      checkLine(a, c, b);
+      console.log(`3-передаю в checkLine(): ${b} - ${c} - ${a}`);
+      checkLine(b, c, a);
+    } else { break; }
+  }
 
-  //2-я горизонталь
-  checkLine(ba, bb, bc);
-  checkLine(ba, bc, bb);
-  checkLine(bb, bc, ba);
+  // проверка вертикали
+  for (let i = 0; i < 3; i++) {
+    if (temp == 0) {
+      let a = i,
+        b = i + 3,
+        c = i + 6;
+      console.log(`передаю в checkLine(): ${a} - ${b} - ${c}`);
+      checkLine(a, b, c);
+      console.log(`2-передаю в checkLine(): ${a} - ${c} - ${b}`);
+      checkLine(a, c, b);
+      console.log(`3-передаю в checkLine(): ${b} - ${c} - ${a}`);
+      checkLine(b, c, a);
+    } else { break; }
+  }
 
-  //3-я горизонталь
-  checkLine(ca, cb, cc);
-  checkLine(ca, cc, cb);
-  checkLine(cb, cc, ca);
+  //проверка диагоналей
+  if (temp == 0) {
+    checkLine(0, 4, 8);
+    checkLine(0, 8, 4);
+    checkLine(4, 8, 0);
+  }
+  if (temp == 0) {
+    checkLine(6, 4, 2);
+    checkLine(6, 2, 4);
+    checkLine(4, 2, 6);
+  }
 
-  //1-я вертикаль
-  checkLine(aa, ba, ca);
-  checkLine(aa, ca, ba);
-  checkLine(ba, ca, aa);
-
-  //2-я вертикаль
-  checkLine(ab, bb, cb);
-  checkLine(ab, cb, bb);
-  checkLine(bb, cb, ab);
-
-  //3-я вертикаль
-  checkLine(ac, bc, cc);
-  checkLine(ac, cc, bc);
-  checkLine(bc, cc, ac);
-
-  //1-я диагональ
-  checkLine(aa, bb, cc);
-  checkLine(aa, cc, bb);
-  checkLine(bb, cc, aa);
-
-  //2-я диагональ
-  checkLine(ca, bb, ac);
-  checkLine(ca, ac, bb);
-  checkLine(bb, ac, ca);
-
-  console.log('checkLastEmptyCellPlayer(): конец функции');
+  console.log('checkEmptyCellPlayer(): конец функции');
+  if (temp == 1) { return true; } else { return false; }
 }
 
 /**проверка выигыша Игрок*/
