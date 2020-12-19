@@ -88,15 +88,17 @@ function addMainLogic(a) {
 
     if (checkVictoryPlayer() == true) {//проверить выигрыш Игрок
       return; // если true - выйти из функции
-    } else if (checkEmptyCellPC()) { // проверка: заполненены две ячейки в линии ПК - ставить третью, это выигрыш
+    } else if (setEmptyCellPC()) { // проверка: заполненены две ячейки в линии ПК - ставить третью, это выигрыш
       checkVictoryPC(); //проверить выигрыш ПК
       return;
-    } else if (checkEmptyCellPlayer() == true) {// проверка: заполненены две ячейки в линии Игрок - блокировать линию Игрока
+    } else if (setEmptyCellPlayer() == true) {// проверка: заполненены две ячейки в линии Игрок - блокировать линию Игрока
       checkVictoryPC(); //проверить выигрыш ПК
       return;
     }
   }
 }
+
+/********************** */
 
 /**функция случайное число в диапазоне, кратное num */
 function rndInt(min, max, num) {
@@ -158,28 +160,29 @@ function moveX(cell1, cell2) {
 }
 
 /**проверка -  если у ПК заполненены две ячейки в линии - ставить третью*/
-function checkEmptyCellPC() {
+/**проверять всё поле*/
+function setEmptyCellPC() {
   //условная матрица ячеек
   //[aa, ab, ac]
   //[ba, bb, bc]
   //[ca, cb, cc]
 
   console.log('*********************');
-  console.log('checkEmptyCellPC111(): старт - ПК - хочу занять третью (своб-ю) яч.');
+  console.log('setEmptyCellPC(): старт - ПК - хочу занять третью (своб-ю) яч.');
 
   let temp = 0;
 
   function checkLine(a, b, c) {
-    console.log(`checkEmptyCellPC111(): проверяю ${a} - ${b} и ${c}`);
+    console.log(`setEmptyCellPC(): проверяю ${a} - ${b} и ${c}`);
 
-    if (cells[a].classList.contains('board__item--pc') && cells[b].classList.contains('board__item--pc')) {
+    if (cells[a].classList.contains('board__item--pc') && cells[b].classList.contains('board__item--pc') && !cells[c].classList.contains('board__item--player')) {
       cells[c].classList.add('board__item--pc');
-      console.log(`checkEmptyCellPC111(): у ПК совпадение линии ${a} - ${b} и ${c}`);
+      console.log(`setEmptyCellPC(): у ПК совпадение линии ${a} - ${b} и ${c}`);
       temp = 1;
       console.log(`temp = ${temp}`);
       return;
     } else {
-      console.log(`checkEmptyCellPC111(): совпадений не нашел ${a} - ${b} и ${c}`);
+      console.log(`setEmptyCellPC(): совпадений не нашел ${a} - ${b} и ${c}`);
     }
   }
 
@@ -225,36 +228,47 @@ function checkEmptyCellPC() {
     checkLine(4, 2, 6);
   }
 
-  console.log('checkEmptyCellPC111(): конец функции');
+  console.log('setEmptyCellPC(): конец функции');
   if (temp == 1) { return true; } else { return false; }
 }
 
+
 /**проверка -  если у ИГРОКа заполненены две ячейки в линии - блокировать Игрока в линии*/
-function checkEmptyCellPlayer() {
+//переделать.
+//Не нужно проверять всю матрицу.
+//Проверять только относительно той ячейки, к которую сделал ход Игрок
+//проверять ОДНУ горизонталь
+//проверять ОДНУ вертикаль
+//проверять ОДНУ(ДВЕ) диагонали
+function setEmptyCellPlayer() {
   //условная матрица ячеек
   //[aa, ab, ac]
   //[ba, bb, bc]
   //[ca, cb, cc]
 
   console.log('*********************');
-  console.log('checkEmptyCellPlayer(): старт - хочу блокир.  третью(своб-ю) яч. у ИГРОКА');
+  console.log('setEmptyCellPlayer(): старт - хочу блокир.  третью(своб-ю) яч. у ИГРОКА');
 
   let temp = 0;
 
+  //function checkLine(a, b, c) {
+
+
   function checkLine(a, b, c) {
-    console.log(`checkEmptyCellPlayer: начал проверку ${a} - ${b} - ${c}`);
+    console.log(`setEmptyCellPlayer: начал проверку ${a} - ${b} и ${c}`);
 
     if (cells[a].classList.contains('board__item--player') && cells[b].classList.contains('board__item--player')) {
-      console.log(`checkEmptyCellPlayer(): нашел совпадение - у Игрока две занятые ячейки в линии ${a} - ${b} - ${c}`);
+      console.log(`setEmptyCellPlayer(): нашел совпадение - у Игрока две занятые ячейки в линии ${a} - ${b} и ${c}`);
       if (cells[c].classList.contains('board__item--pc')) {
         //если третья в линии занято ПК, тогда ходить в угол
-        console.log(`checkEmptyCellPlayer(): третья в линии ${a} - ${b} - ${c} - уже занято ПК, поэтому хожу в угол`);
+        console.log(`setEmptyCellPlayer(): третья в линии ${a} - ${b} и ${c} - уже занято ПК, поэтому хожу в угол`);
         moveCorner(); // ход в угол
+
         temp = 1;
         console.log(`temp = ${temp}`);
         return;
       } else {
-        console.log('checkEmptyCellPlayer: блокирую линию Игрока');
+        console.log('setEmptyCellPlayer: блокирую линию Игрока');
         cells[c].classList.add('board__item--pc'); // блокировать линию Игрока
         temp = 1;
         console.log(`temp = ${temp}`);
@@ -263,17 +277,18 @@ function checkEmptyCellPlayer() {
     }
   }
 
-  // проверка горизонтали
+
+
   for (let i = 0; i < 3; i++) {
     if (temp == 0) {
       let a = i * 3,
         b = i * 3 + 1,
         c = i * 3 + 2;
-      console.log(`1-передаю в checkLine(): ${a} - ${b} - ${c}`);
+      console.log(`1-передаю в checkLine() гориз: ${a} - ${b} - ${c}`);
       checkLine(a, b, c);
-      console.log(`2-передаю в checkLine(): ${a} - ${c} - ${b}`);
+      console.log(`2-передаю в checkLine() гориз: ${a} - ${c} - ${b}`);
       checkLine(a, c, b);
-      console.log(`3-передаю в checkLine(): ${b} - ${c} - ${a}`);
+      console.log(`3-передаю в checkLine() гориз: ${b} - ${c} - ${a}`);
       checkLine(b, c, a);
     } else { break; }
   }
@@ -284,11 +299,11 @@ function checkEmptyCellPlayer() {
       let a = i,
         b = i + 3,
         c = i + 6;
-      console.log(`передаю в checkLine(): ${a} - ${b} - ${c}`);
+      console.log(`передаю в checkLine() верт: ${a} - ${b} - ${c}`);
       checkLine(a, b, c);
-      console.log(`2-передаю в checkLine(): ${a} - ${c} - ${b}`);
+      console.log(`2-передаю в checkLine() верт: ${a} - ${c} - ${b}`);
       checkLine(a, c, b);
-      console.log(`3-передаю в checkLine(): ${b} - ${c} - ${a}`);
+      console.log(`3-передаю в checkLine() верт: ${b} - ${c} - ${a}`);
       checkLine(b, c, a);
     } else { break; }
   }
@@ -309,7 +324,7 @@ function checkEmptyCellPlayer() {
   if (temp == 1) { return true; } else { return false; }
 }
 
-/**проверка выигыша Игрок*/
+/**проверка выигыша Игрок - искать по всему полю - это ОК*/
 function checkVictoryPlayer() {
   //условная матрица ячеек
   //[aa, ab, ac]
@@ -359,11 +374,12 @@ function checkVictoryPlayer() {
   if (temp == 0) { checkLine(6, 4, 2); }
 
   console.log('checkVictoryPlayer: стоп');
+  console.log('*********************');
 
   if (temp == 1) { return true; } else { return false; }
 }
 
-/**проверка выигыша ПК*/
+/**проверка выигыша ПК - искать по всему полю - это ОК*/
 function checkVictoryPC() {
   //условная матрица ячеек
   //[aa, ab, ac]
@@ -413,4 +429,5 @@ function checkVictoryPC() {
   if (temp == 0) { checkLine(6, 4, 2); }
 
   console.log('checkVictoryPC(): стоп');
+  console.log('*********************');
 }
